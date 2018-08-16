@@ -1,5 +1,5 @@
-# blueprint-power-consumption-calculator
-The Blueprint Power Consumption Calculator (BPCC) is a small Java application to quickly calculate and view the power consumption of machines, inserters etc. from a blueprint string.
+# Blueprint Power Consumption Calculator (BPCC)
+The BPCC is a small Java application to quickly calculate and view the power consumption of machines, inserters etc. from a blueprint string.
 
 It's fairly easy to use:
 
