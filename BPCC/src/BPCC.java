@@ -53,8 +53,6 @@ public class BPCC {
 
 			String result = inflate(decoded);
 			
-			System.out.println(result);
-
 			calculatePowerConsumption(result);
 
 		}
@@ -70,6 +68,8 @@ public class BPCC {
 
 		int power = 0;
 
+		System.out.print("Calculating\r");
+		
 		for (Entities entity: entities) {
 			
 			for (String key: map.keySet()) {
@@ -84,11 +84,19 @@ public class BPCC {
 			
 		}
 
-		System.out.println("Max. Power Consumption: " + power + " kW");
+		if (power < 1000) {
+			System.out.printf("Max. Power Consumption: %d kW", power);
+		} else if (power > 1000) {
+			System.out.printf("Max. Power Consumption: %.1f MW", power / 1000.0);
+		} else if (power > 1000000) {
+			System.out.printf("Max. Power Consumption: %.1f GW", power / 1000000.0);
+		}
 		
 	}
 
 	public static String inflate(byte[] decoded) throws IOException {
+		System.out.print("Inflating\r");
+		
 		ByteArrayInputStream bais = new ByteArrayInputStream(decoded);
 		InflaterInputStream iis = new InflaterInputStream(bais);
 
@@ -114,7 +122,8 @@ public class BPCC {
 	}
 
 	public static byte[] decodeBase64String(String string) {
-
+		System.out.print("Decoding\r");
+		
 		byte[] decoded = Base64.getMimeDecoder().decode(string);
 
 		return decoded;
